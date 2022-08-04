@@ -1,4 +1,8 @@
-﻿# AndroLua-
+#本项目更改内容
+升级Lua为官方5.4.4版，未适配原版的switch case语句和module函数等，故对相应的.lua做了对应修改，以保证打包后项目应用能正常运行
+
+原仓库链接https://github.com/nirenr/AndroLua_pro
+# AndroLua-原版更新日志
 lua 5.3.3 for android pro
 
 4.2.0

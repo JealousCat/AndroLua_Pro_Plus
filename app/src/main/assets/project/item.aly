@@ -1,0 +1,41 @@
+{
+  LinearLayout;
+  layout_width="fill";
+  {
+    ImageView;
+    layout_width="64dp";
+    layout_height="64dp";
+    padding="2dp";
+    id="icon";
+  };
+  {
+    LinearLayout;
+    orientation="vertical";
+    --layout_height="64dp";
+    padding="2dp";
+    layout_width="fill";
+    {
+      TextView;
+      layout_width="fill";
+      textSize="20dp";
+      singleLine="true";
+      id="title";
+    };
+    {
+      TextView;
+     -- layout_gravity="bottom";
+      layout_width="fill";
+      textSize="12dp";
+      singleLine="true";
+      id="path";
+    };
+    {
+      TextView;
+      layout_gravity="bottom";
+      layout_width="fill";
+      textSize="14dp";
+      singleLine="true";
+      id="description";
+    };
+  };
+};

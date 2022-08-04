@@ -1,4 +1,4 @@
-﻿# AndroLua-原版更新日志
+﻿# AndroLua-
 lua 5.3.3 for android pro
 
 4.2.0

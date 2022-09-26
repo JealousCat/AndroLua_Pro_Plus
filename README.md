@@ -1,3 +1,80 @@
+﻿更多更新细节，请自行体验
+#更新八
+自动的实时的语法查错功能，报错内容包含行号，报错在当前行的位置，报错附近的字符等，报错行将设置为高亮状态
+更新了一个比原来好一点的UI，即使它还十分粗糙。
+LuaUtil类中增加了访问网络时设置参数更为方便的静态方法makeRequest
+makeRequest(String url)
+makeRequest(String url,Map<Object,Object> headers)
+makeRequest(String url,String data)
+makeRequest(String url,Map<Object,Object> headers,String data)
+
+你可以如下使用
+require "import"
+import "com.androlua.LuaUtil"
+local content = LuaUtil.makeRequest("https://github.com/JealousCat/AndroLua_Pro_Plus")
+print(content)
+--返回类型为Map，可以使用luajava.astable转为lua table，对于key或value是Map的，则多次使用该函数即可
+
+#更新七
+//整除，返回值为整数
+!= 不等于，与~=兼容
+!逻辑否，与not兼容
+&&逻辑与，与and兼容
+&按位与
+?逻辑与，与and兼容
+@逻辑或，与or兼容
+||逻辑或，与or兼容
+|按位或
+exp ? exp1 @ exp2  三目运算，与exp and exp1 or exp2 兼容
+
+
+#更新六
+使用print将可以直接打印table的具体内容
+优化完全的支持中文变量名
+更新了string.split函数，在导入import方法时可用
+local 啊 = "sac,cve,avs,av,s,av,s,av,s,avs,"
+list = 啊:split(",")
+print(list)
+
+#更新五
+支持 loadlayout加载布局时，如果background属性是一个编译后的xml矢量图，它将会尝试加载
+layouthelper 布局助手内也可以预览它
+
+
+#更新四
+更新并修复支持Java数组的创建
+local a = int{1,2,3}
+a = Object{2,1,"few",true}
+在使用这些时请确保你的 import是导入的
+
+
+#更新三
+采用了新的代码高亮方式，包括关键字、短字符串、长字符串、数字、导入的类（包）名、表的KEY、函数名等
+
+
+#更新二
+恢复支持数组创建，它的执行将比使用表进行创建快一些
+数组创建：  local a = [1,2,445,"32",true]
+
+恢复对switch case 语句的支持，并优化支持连续的case句子
+switch 43
+  case 3,7,85,3
+  case 4
+  case 5
+  print("2222")
+ default
+ print(1234)
+end
+
+注：switch case的判断值，你可以是任意有效的值；
+       switch 与 end配对，在switch或者case的表达式后如果你加了do或then或{或:并不会影响你的句子执行
+       case的表达式后面可以连续的用  【,】  分割多个值，它和你写多个case分支不写block时执行效果一致
+       default语句不是必要的语句
+
+#更新一
+Lua 5.4.4 for Android
+
+
 #本项目更改内容
 升级Lua为官方5.4.4版，未适配原版的switch case语句和module函数等，故对相应的.lua做了对应修改，以保证打包后项目应用能正常运行
 
@@ -1088,4 +1165,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-

@@ -1,8 +1,10 @@
-﻿更多更新细节，请自行体验
+更多更新细节，请自行体验
 
 #更新八
+
 自动的实时的语法查错功能，报错内容包含行号，报错在当前行的位置，报错附近的字符等，报错行将设置为高亮状态
 更新了一个比原来好一点的UI，即使它还十分粗糙。
+
 LuaUtil类中增加了访问网络时设置参数更为方便的静态方法makeRequest
 makeRequest(String url)
 makeRequest(String url,Map<Object,Object> headers)

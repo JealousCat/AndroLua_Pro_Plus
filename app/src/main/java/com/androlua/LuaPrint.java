@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 package com.androlua;
 
 import com.luajava.*;
+
+import java.util.Map;
 
 public class LuaPrint extends JavaFunction {
 
@@ -16,7 +17,7 @@ public class LuaPrint extends JavaFunction {
     }
 
     @Override
-    public int execute() throws LuaException {
+    public int execute() throws LuaError {
         if (L.getTop() < 2) {
             mLuaContext.sendMsg("");
             return 0;
@@ -27,10 +28,13 @@ public class LuaPrint extends JavaFunction {
             String stype = L.typeName(type);
             if (stype.equals("userdata")) {
                 Object obj = L.toJavaObject(i);
-                if (obj != null)
+                if (obj != null) {
                     val = obj.toString();
+                }
             } else if (stype.equals("boolean")) {
                 val = L.toBoolean(i) ? "true" : "false";
+            } else if (stype.equals("table")){
+                val = ((LuaTable)L.toJavaObject(i)).tostring();
             } else {
                 val = L.toString(i);
             }
@@ -48,54 +52,3 @@ public class LuaPrint extends JavaFunction {
 
 }
 
-=======
-package com.androlua;
-
-import com.luajava.*;
-
-public class LuaPrint extends JavaFunction {
-
-    private LuaState L;
-    private LuaContext mLuaContext;
-    private StringBuilder output = new StringBuilder();
-
-    public LuaPrint(LuaContext luaContext, LuaState L) {
-        super(L);
-        this.L = L;
-        mLuaContext = luaContext;
-    }
-
-    @Override
-    public int execute() throws LuaException {
-        if (L.getTop() < 2) {
-            mLuaContext.sendMsg("");
-            return 0;
-        }
-        for (int i = 2; i <= L.getTop(); i++) {
-            int type = L.type(i);
-            String val = null;
-            String stype = L.typeName(type);
-            if (stype.equals("userdata")) {
-                Object obj = L.toJavaObject(i);
-                if (obj != null)
-                    val = obj.toString();
-            } else if (stype.equals("boolean")) {
-                val = L.toBoolean(i) ? "true" : "false";
-            } else {
-                val = L.toString(i);
-            }
-            if (val == null)
-                val = stype;
-            output.append("\t");
-            output.append(val);
-            output.append("\t");
-        }
-        mLuaContext.sendMsg(output.toString().substring(1, output.length() - 1));
-        output.setLength(0);
-        return 0;
-    }
-
-
-}
-
->>>>>>> d5ebc43 (Lua 5.5.0)

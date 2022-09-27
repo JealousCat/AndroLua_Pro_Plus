@@ -1,11 +1,12 @@
-<<<<<<< HEAD
 apply plugin: 'com.android.application'
 android {
     compileSdkVersion 30
     defaultConfig {
         applicationId "com.androlua"
-        minSdkVersion 18
-        targetSdkVersion 30
+        minSdkVersion 19
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 25
+        multiDexEnabled false
         ndk {
             ldLibs "log"
             android.ndkVersion "22.1.7171670"
@@ -13,7 +14,6 @@ android {
         }
     }
     packagingOptions {
-        exclude 'META-INF/proguard/androidx-annotations.pro'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
@@ -23,9 +23,10 @@ android {
         release {
             minifyEnabled false
             debuggable false
-            multiDexEnabled true
+            multiDexEnabled false
         }
         debug {
+            minifyEnabled false
             debuggable true
             jniDebuggable true
         }
@@ -33,7 +34,7 @@ android {
     }
     externalNativeBuild {
         ndkBuild {
-            path 'src/main/jni/android.mk'
+            path 'src/main/jni/Android.mk'
         }
     }
     productFlavors {
@@ -48,55 +49,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.annotation:annotation:1.4.0'
-=======
-apply plugin: 'com.android.application'
-android {
-    compileSdkVersion 30
-    defaultConfig {
-        applicationId "com.androlua"
-        minSdkVersion 18
-        targetSdkVersion 30
-        ndk {
-            ldLibs "log"
-            android.ndkVersion "22.1.7171670"
-            abiFilters 'arm64-v8a'
-        }
-    }
-    packagingOptions {
-        exclude 'META-INF/proguard/androidx-annotations.pro'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            debuggable false
-            multiDexEnabled true
-        }
-        debug {
-            debuggable true
-            jniDebuggable true
-        }
-
-    }
-    externalNativeBuild {
-        ndkBuild {
-            path 'src/main/jni/android.mk'
-        }
-    }
-    productFlavors {
-    }
-    compileOptions {
-        targetCompatibility JavaVersion.VERSION_11
-        sourceCompatibility JavaVersion.VERSION_11
-    }
-    ndkVersion '25.0.8775105'
-}
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.annotation:annotation:1.4.0'
->>>>>>> d5ebc43 (Lua 5.5.0)
+    implementation 'androidx.core:core:1.6.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'cn.wanghaomiao:JsoupXpath:2.5.1'
+    implementation 'org.apache.commons:commons-compress:1.21'
+    implementation 'commons-io:commons-io:2.5'
 }

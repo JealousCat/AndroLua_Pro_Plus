@@ -1,30 +1,124 @@
-<<<<<<< HEAD
 layout={
   main={
-    LinearLayout,
-    layout_width="fill",
-    layout_height="fill",
-    orientation="vertical";
+    RelativeLayout;
+    layout_width="fill";
+    layout_height="fill";
     {
-      LuaEditor,
-      id="editor",
-      text= "",
+      LinearLayout,
       layout_width="fill",
       layout_height="fill",
-      layout_weight=1 ,
-      --gravity="top"
-    },
-    {
-      HorizontalScrollView;
-      horizontalScrollBarEnabled=false,
+      orientation="vertical";
       {
-        LinearLayout;
-        id="ps_bar";
+        HorizontalScrollView;
+        horizontalScrollBarEnabled=false,
+        {
+          LinearLayout;
+          id="ps_bar3";
+          layout_width="fill";
+        };
         layout_width="fill";
       };
-      layout_width="fill";
+      {
+        LuaEditor,
+        id="editor",
+        text= "",
+        layout_width="fill",
+        layout_height="fill",
+        layout_weight=1 ,
+        --gravity="top"
+      },
+      {
+        HorizontalScrollView;
+        horizontalScrollBarEnabled=false,
+        {
+          LinearLayout;
+          layout_width="fill";
+          {
+            TextView,
+            id="errormes",
+            layout_width="fill";
+            layout_height="fill";
+          }
+        };
+        layout_width="fill";
+      };
+      {
+        HorizontalScrollView;
+        horizontalScrollBarEnabled=false,
+        {
+          LinearLayout;
+          id="ps_bar2";
+          layout_width="fill";
+        };
+        layout_width="fill";
+      };
+      {
+        HorizontalScrollView;
+        horizontalScrollBarEnabled=false,
+        {
+          LinearLayout;
+          id="ps_bar";
+          layout_width="fill";
+        };
+        layout_width="fill";
+      };
+    },
+    {
+      Button;
+      layout_height="56dp";
+      layout_marginRight="7dp";
+      id="bt";
+      layout_alignParentRight="true";
+      layout_width="56dp";
+      layout_alignParentBottom="true";
+      text="打开";
+      layout_marginBottom="80dp";
     };
-  },
+    {
+      Button;
+      layout_alignLeft="bt";
+      layout_height="53dp";
+      id="bt1";
+      layout_above="bt";
+      layout_width="53dp";
+      text="新建文件";
+      Visibility="gone";
+      layout_marginBottom="8dp";
+    };
+    {
+      Button;
+      layout_alignLeft="bt";
+      layout_height="53dp";
+      id="bt2";
+      layout_above="bt1";
+      layout_width="53dp";
+      text="保存文件";
+      Visibility="gone";
+      layout_marginBottom="8dp";
+    };
+    {
+      Button;
+      layout_alignLeft="bt";
+      layout_height="53dp";
+      id="bt3";
+      layout_above="bt2";
+      layout_width="53dp";
+      text="导航";
+      Visibility="gone";
+      layout_marginBottom="8dp";
+    };
+    {
+      Button;
+      layout_alignLeft="bt";
+      layout_height="53dp";
+      id="bt4";
+      layout_above="bt3";
+      layout_width="53dp";
+      text="颜色选择";
+      Visibility="gone";
+      layout_marginBottom="8dp";
+    };
+  };
 
   build={
     ScrollView ,
@@ -141,147 +235,3 @@ layout={
 
 
 }
-=======
-layout={
-  main={
-    LinearLayout,
-    layout_width="fill",
-    layout_height="fill",
-    orientation="vertical";
-    {
-      LuaEditor,
-      id="editor",
-      text= "",
-      layout_width="fill",
-      layout_height="fill",
-      layout_weight=1 ,
-      --gravity="top"
-    },
-    {
-      HorizontalScrollView;
-      horizontalScrollBarEnabled=false,
-      {
-        LinearLayout;
-        id="ps_bar";
-        layout_width="fill";
-      };
-      layout_width="fill";
-    };
-  },
-
-  build={
-    ScrollView ,
-    layout_width="fill",
-    {
-      LinearLayout,
-      orientation=1,
-      layout_width="fill",
-      paddingLeft=20,
-      {
-        TextView,
-        text="脚本路径"
-      },
-      {
-        EditText,
-        id="luaPath",
-        layout_width="fill",
-        singleLine=true,
-      },
-      {
-        TextView,
-        text="包名称"
-      },
-      {
-        EditText,
-        id="packageName",
-        layout_width="fill",
-        singleLine=true,
-      },
-      {
-        TextView,
-        text="程序名称"
-      },
-      {
-        EditText,
-        id="appName",
-        layout_width="fill",
-        singleLine=true,
-      },
-      {
-        TextView,
-        text="程序版本"
-      },
-      {
-        EditText,
-        id="appVer",
-        layout_width="fill",
-        singleLine=true,
-      },
-      {
-        TextView,
-        text="apk路径"
-      },
-      {
-        EditText,
-        id="apkPath",
-        layout_width="fill",
-        singleLine=true,
-      },
-      {
-        TextView,
-        text="打包使用debug签名",
-        id="status"
-      },
-    }
-  },
-
-  project={
-    ScrollView ,
-    layout_width="fill",
-    {
-      LinearLayout,
-      orientation=1,
-      layout_width="fill",
-      padding="10dp",
-      {
-        TextView,
-        text="程序名称"
-      },
-      {
-        EditText,
-        id="project_appName",
-        text="demo",
-        layout_width="fill",
-        singleLine=true,
-      },
-      {
-        TextView,
-        text="包名称"
-      },
-      {
-        EditText,
-        id="project_packageName",
-        text="com.androlua.demo",
-        layout_width="fill",
-        singleLine=true,
-      },
-    }
-  },
-  open2={
-    LinearLayout;
-    orientation="vertical";
-    {
-      EditText;
-      layout_width="fill";
-      id="open_edit";
-    };
-    {
-      ListView;
-      layout_width="fill";
-      id="listview2";
-    };
-  };
-
-
-}
->>>>>>> d5ebc43 (Lua 5.5.0)

@@ -1,5 +1,6 @@
 Androlua 1.0 Copyright (C) 2011 by Michal Kottman
 Androlua+ 3.0 Copyright (C) 2015-2016 by Nirenr
+Androlua++ 5.5.0 Copyright (C) 2021-2022 by JealousCat
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

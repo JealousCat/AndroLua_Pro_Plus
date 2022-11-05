@@ -60,7 +60,7 @@ func={}
 func["捐赠"]=function()
     intent = Intent();
     intent.setAction("android.intent.action.VIEW");
-    content_url = Uri.parse("https://qr.alipay.com/apt7ujjb4jngmu3z9a");
+    content_url = Uri.parse("https://qr.alipay.com/fkx18836ugaohvlja7yg5ef");
     intent.setData(content_url);
     activity.startActivity(intent);
     end

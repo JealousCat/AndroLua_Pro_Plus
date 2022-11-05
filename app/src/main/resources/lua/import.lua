@@ -11,9 +11,12 @@ if _G then
             if not match then
                 match = ""
             end
-            local s = String(parent)
-            s = s.split(match,-1)
-            return luajava.astable(s)
+            local String = luajava.bindClass("java.lang.String")
+            local _,s = pcall(String,parent)
+            if _ then
+                s = s.split(match,-1)
+                return luajava.astable(s)
+            end
         end
         return parent
     end

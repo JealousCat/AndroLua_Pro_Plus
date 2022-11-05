@@ -481,22 +481,64 @@ function create_aly()
   --create_dlg.hide()
 end
 
+function successed(msg)
+  import "android.app.*"
+  import "android.os.*"
+  import "android.widget.*"
+  import "android.view.*"
+  import "com.androlua.*"
+  import "java.io.*"
+  import "android.text.method.*"
+  import "android.net.*"
+  import "android.content.*"
+  import "android.graphics.drawable.*"
+  import "java.util.zip.*"
+  import "java.util.*"
+  import "java.lang.*"
+  import "android.*"
+  import "java.io.File"
+  local open_dlg = AlertDialogBuilder(activity)
+  open_dlg.setTitle("提示！")
+  open_dlg.Message = msg
+  open_dlg.setPositiveButton("确定", nil)
+  open_dlg.setNeutralButton("取消",nil)
+  open_dlg.show()
+end
+
+function formatPath(s)
+  local p = s
+  if p:sub(#p,#p) == "/" then
+    return p
+   else
+    return p.."/"
+  end
+end
+
 function open(p)
   if p == luadir then
     return nil
   end
-  if p:find("%.%./") then
+  if File(open_title.getText()).isFile() then
+    luadir = File(open_title.getText()).getParentFile().getAbsolutePath()
+    luadir = formatPath(luadir)
+    list(listview,luadir)
+   elseif p:find("%.%./") then
     luadir = luadir:match("(.-)[^/]+/$")
+    if luadir == "/" then
+      luadir = "/sdcard/"
+      successed("到顶了")
+    end
     list(listview, luadir)
    elseif p:find("/") then
     luadir = luadir .. p
     list(listview, luadir)
-   elseif p:find("%.alp$") then
+    elseif p:find("%.alp$") then
     imports(luadir .. p)
     open_dlg.hide()
    else
     read(luadir .. p)
     open_dlg.hide()
+    open_dlg = nil
   end
 end
 
@@ -513,6 +555,7 @@ function adapter(t)
 end
 
 function list(v, p)
+  import "java.io.File"
   local f = File(p)
   if not f then
     open_title.setText(p)
@@ -522,7 +565,7 @@ function list(v, p)
   end
 
   local fs = f.listFiles()
-  fs = fs or luajava.createArray("java.lang.String", {"0"})
+  fs = fs or String[0]
   Arrays.sort(fs)
   local t = {}
   local td = {}
@@ -534,7 +577,7 @@ function list(v, p)
     local name = fs[n].getName()
     if fs[n].isDirectory() then
       table.insert(td, name .. "/")
-     elseif name:find("%.lua$") or name:find("%.aly$") or name:find("%.alp$") then
+     elseif name:find("%.lua$") or name:find("%.aly$") or name:find("%.alp$") or name:find("%.txt$") then
       table.insert(tf, name)
     end
   end
@@ -544,8 +587,6 @@ function list(v, p)
     table.insert(td, v)
   end
   open_title.setText(p)
-  --local adapter=ArrayAdapter(activity,android.R.layout.simple_list_item_1, String(td))
-  --v.setAdapter(adapter)
   open_dlg.setItems(td)
 end
 

@@ -2,9 +2,13 @@
 
 # 更新九
 修复newActivity传递的Intent参数不可获取问题，现在你将可以用如下的方式在不同Activity之间传递参数
+
 --import "java.lang.Object" 你也可以是任何类
+
 activity.newActivity( activity_path, Object{参数1, 参数2, 参数N} ) --newActivity还有其他参数传递方式，具体的看LuaActivity类
+
 在新启动的Activity里
+
 activity.getArg(0) --下标从0开始，如果你传的参数长度大于等于1的话
 
 # 更新八

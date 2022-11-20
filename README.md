@@ -1,6 +1,13 @@
 更多更新细节，请自行体验
 
-#更新八
+# 更新九
+修复newActivity传递的Intent参数不可获取问题，现在你将可以用如下的方式在不同Activity之间传递参数
+--import "java.lang.Object" 你也可以是任何类
+activity.newActivity( activity_path, Object{参数1, 参数2, 参数N} ) --newActivity还有其他参数传递方式，具体的看LuaActivity类
+在新启动的Activity里
+activity.getArg(0) --下标从0开始，如果你传的参数长度大于等于1的话
+
+# 更新八
 
 自动的实时的语法查错功能，报错内容包含行号，报错在当前行的位置，报错附近的字符等，报错行将设置为高亮状态
 更新了一个比原来好一点的UI，即使它还十分粗糙。
@@ -18,7 +25,7 @@ local content = LuaUtil.makeRequest("https://github.com/JealousCat/AndroLua_Pro_
 print(content)
 --返回类型为Map，可以使用luajava.astable转为lua table，对于key或value是Map的，则多次使用该函数即可
 
-#更新七
+# 更新七
 //整除，返回值为整数
 != 不等于，与~=兼容
 !逻辑否，与not兼容
@@ -31,7 +38,7 @@ print(content)
 exp ? exp1 @ exp2  三目运算，与exp and exp1 or exp2 兼容
 
 
-#更新六
+# 更新六
 使用print将可以直接打印table的具体内容
 优化完全的支持中文变量名
 更新了string.split函数，在导入import方法时可用
@@ -39,23 +46,23 @@ local 啊 = "sac,cve,avs,av,s,av,s,av,s,avs,"
 list = 啊:split(",")
 print(list)
 
-#更新五
+# 更新五
 支持 loadlayout加载布局时，如果background属性是一个编译后的xml矢量图，它将会尝试加载
 layouthelper 布局助手内也可以预览它
 
-
-#更新四
+ 
+# 更新四
 更新并修复支持Java数组的创建
 local a = int{1,2,3}
 a = Object{2,1,"few",true}
 在使用这些时请确保你的 import是导入的
 
 
-#更新三
+# 更新三
 采用了新的代码高亮方式，包括关键字、短字符串、长字符串、数字、导入的类（包）名、表的KEY、函数名等
 
 
-#更新二
+# 更新二
 恢复支持数组创建，它的执行将比使用表进行创建快一些
 数组创建：  local a = [1,2,445,"32",true]
 
@@ -74,11 +81,11 @@ end
        case的表达式后面可以连续的用  【,】  分割多个值，它和你写多个case分支不写block时执行效果一致
        default语句不是必要的语句
 
-#更新一
+# 更新一
 Lua 5.4.4 for Android
 
 
-#本项目更改内容
+# 本项目更改内容
 升级Lua为官方5.4.4版，未适配原版的switch case语句和module函数等，故对相应的.lua做了对应修改，以保证打包后项目应用能正常运行
 
 原仓库链接https://github.com/nirenr/AndroLua_pro

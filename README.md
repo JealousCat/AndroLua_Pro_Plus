@@ -3,63 +3,81 @@
 # 更新九
 修复newActivity传递的Intent参数不可获取问题，现在你将可以用如下的方式在不同Activity之间传递参数
 
---import "java.lang.Object" 你也可以是任何类
-
-activity.newActivity( activity_path, Object{参数1, 参数2, 参数N} ) --newActivity还有其他参数传递方式，具体的看LuaActivity类
-
-在新启动的Activity里
-
-activity.getArg(0) --下标从0开始，如果你传的参数长度大于等于1的话
+       --import "java.lang.Object" 你也可以是任何类
+       activity.newActivity( activity_path, Object{参数1, 参数2, 参数N} ) --newActivity还有其他参数传递方式，具体的看LuaActivity类
+       在新启动的Activity里
+       activity.getArg(0) --下标从0开始，如果你传的参数长度大于等于1的话
 
 # 更新八
 
 自动的实时的语法查错功能，报错内容包含行号，报错在当前行的位置，报错附近的字符等，报错行将设置为高亮状态
+
 更新了一个比原来好一点的UI，即使它还十分粗糙。
 
-LuaUtil类中增加了访问网络时设置参数更为方便的静态方法makeRequest
-makeRequest(String url)
-makeRequest(String url,Map<Object,Object> headers)
-makeRequest(String url,String data)
-makeRequest(String url,Map<Object,Object> headers,String data)
+       LuaUtil类中增加了访问网络时设置参数更为方便的静态方法makeRequest
+       makeRequest(String url)
+       makeRequest(String url,Map<Object,Object> headers)
+       makeRequest(String url,String data)
+       makeRequest(String url,Map<Object,Object> headers,String data)
+
 
 你可以如下使用
-require "import"
-import "com.androlua.LuaUtil"
-local content = LuaUtil.makeRequest("https://github.com/JealousCat/AndroLua_Pro_Plus")
-print(content)
+
+       require "import"
+       import "com.androlua.LuaUtil"
+       local content = LuaUtil.makeRequest("https://github.com/JealousCat/AndroLua_Pro_Plus")
+       print(content)
+
 --返回类型为Map，可以使用luajava.astable转为lua table，对于key或value是Map的，则多次使用该函数即可
 
 # 更新七
-//整除，返回值为整数
-!= 不等于，与~=兼容
-!逻辑否，与not兼容
-&&逻辑与，与and兼容
-&按位与
-?逻辑与，与and兼容
-@逻辑或，与or兼容
-||逻辑或，与or兼容
-|按位或
-exp ? exp1 @ exp2  三目运算，与exp and exp1 or exp2 兼容
+       //整除，返回值为整数
+
+       != 不等于，与~=兼容
+
+       !逻辑否，与not兼容
+
+       &&逻辑与，与and兼容
+
+       &按位与
+
+       ?逻辑与，与and兼容
+
+       @逻辑或，与or兼容
+
+       ||逻辑或，与or兼容
+
+       |按位或
+
+       exp ? exp1 @ exp2  三目运算，与exp and exp1 or exp2 兼容
+
 
 
 # 更新六
 使用print将可以直接打印table的具体内容
+
 优化完全的支持中文变量名
+
 更新了string.split函数，在导入import方法时可用
-local 啊 = "sac,cve,avs,av,s,av,s,av,s,avs,"
-list = 啊:split(",")
-print(list)
+
+       local 啊 = "sac,cve,avs,av,s,av,s,av,s,avs,"
+       list = 啊:split(",")
+       print(list)
 
 # 更新五
 支持 loadlayout加载布局时，如果background属性是一个编译后的xml矢量图，它将会尝试加载
+
 layouthelper 布局助手内也可以预览它
 
  
 # 更新四
 更新并修复支持Java数组的创建
-local a = int{1,2,3}
-a = Object{2,1,"few",true}
+
+       local a = int{1,2,3}
+       a = Object{2,1,"few",true}
+
 在使用这些时请确保你的 import是导入的
+
 
 
 # 更新三
@@ -68,22 +86,30 @@ a = Object{2,1,"few",true}
 
 # 更新二
 恢复支持数组创建，它的执行将比使用表进行创建快一些
-数组创建：  local a = [1,2,445,"32",true]
+
+数组创建：
+
+       local a = [1,2,445,"32",true]
+
 
 恢复对switch case 语句的支持，并优化支持连续的case句子
-switch 43
-  case 3,7,85,3
-  case 4
-  case 5
-  print("2222")
- default
- print(1234)
-end
+
+       switch 43
+         case 3,7,85,3
+         case 4  
+         case 5
+         print("2222")
+        default
+        print(1234)
+       end
+
 
 注：switch case的判断值，你可以是任意有效的值；
+
        switch 与 end配对，在switch或者case的表达式后如果你加了do或then或{或:并不会影响你的句子执行
        case的表达式后面可以连续的用  【,】  分割多个值，它和你写多个case分支不写block时执行效果一致
        default语句不是必要的语句
+       
 
 # 更新一
 Lua 5.4.4 for Android
@@ -623,53 +649,73 @@ http://android.toolib.net/reference/packages.html
 
 3，导入包或类
 可以导入包或者类
-import "android.widget.*"
-import "android.widget.Button"
+
+       import "android.widget.*"
+       import "android.widget.Button"
+       
 导入内部类
-import "android.view.View_*"
+
+       import "android.view.View_*"
+       
 或
-import "android.view.View_OnClickListener"
+
+       import "android.view.View_OnClickListener"
+       
 或
-View.OnClickListene
+
+       View.OnClickListene
+       
 包名和类名必须用引号包围。
 
 4，创建布局与组件
-layout=LinearLayout(activity)
-activity.setContentView(layout)
-button=Button(activity)
-layout.addView(button)
-注.activity是当前窗口的Context对象，如果习惯写this只需要
-this=activity
-button=Button(this)
+
+       layout=LinearLayout(activity)
+       activity.setContentView(layout)
+       button=Button(activity)
+       layout.addView(button)
+       注.activity是当前窗口的Context对象，如果习惯写this只需要
+       this=activity
+       button=Button(this)
 
 5，使用方法
-button.setText("按钮")
 
-getter/setter
-Java的getxxx方法没有参数与setxxx方法只有一个参数时可以简写，
-button.Text="按钮"
-x=button.X
+       button.setText("按钮")
+
+       getter/setter
+       Java的getxxx方法没有参数与setxxx方法只有一个参数时可以简写，
+       button.Text="按钮"
+       x=button.X
+
 
 6，使用事件
 创建事件处理函数
-function click(s)
-print("点击")
-end
+
+       function click(s)
+         print("点击")
+       end
+       
 把函数添加到事件接口
-listener=View.OnClickListener{onClick = click}
+
+       listener=View.OnClickListener{onClick = click}
+       
 把接口注册到组件
-button.setOnClickListener(listener)
+
+       button.setOnClickListener(listener)
 
 也可以使用匿名函数
-button.setOnClickListener(View.OnClickListener {onClick = function(s)
-print("点击")
-end
-})
+
+       button.setOnClickListener(View.OnClickListener {onClick = function(s)
+         print("点击")
+       end
+       })
+       
 
 onxxx事件可以简写
-button.onClick=function(v)
-print(v)
-end
+
+       button.onClick=function(v)
+         print(v)
+       end
+
 
 7，回调方法
 function onResume()

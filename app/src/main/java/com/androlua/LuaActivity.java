@@ -516,9 +516,10 @@ public class LuaActivity extends Activity implements LuaBroadcastReceiver.OnRece
 
     public Object getArg(int idx) {
         Object[] arg = (Object[]) getIntent().getSerializableExtra(ARG);
-        if (arg == null || arg.length >= idx)
-            return null;
-        return arg[idx];
+        if (arg != null && arg.length > idx && idx >= 0) {
+            return arg[idx];
+        }
+        return null;
     }
 
     @Override
